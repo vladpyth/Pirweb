@@ -1,0 +1,126 @@
+
+.but_exit{
+
+  box-shadow: var(--m-3-elevation-light-2, 0px 1px 2px 0px rgba(0, 0, 0, 0.3)), var(--m-3-elevation-light-2, 0px 2px 6px 2px rgba(0, 0, 0, 0.15));
+  border-radius: 14px;
+  background: #FFE500;
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  width: 70px;
+  height: 50px;
+}
+.container {
+    position: relative;
+    width: 300px; /* Укажите нужную ширину */
+    height: 400px; /* Укажите нужную высоту */
+}
+.image1 {
+    position: absolute;
+    top: 12px;
+    right: 140px;
+    width: 70px;
+    height: 50px;
+    width: 150px;
+    height: 150px;
+}
+
+.image2 {
+    position: absolute;
+    top: 80px;
+    right: 100px;
+    width: 70px;
+    height: 50px;
+    width: 150px;
+    height: 150px;
+}
+.image3 {
+    position: absolute;
+    top: 150px;
+    right: 14px;
+    width: 70px;
+    height: 50px;
+    width: 150px;
+    height: 150px;
+}
+.container1{
+   position: absolute;
+   top: 280px;
+   left: 10%;
+    width: 70%; 
+    height: 30%; 
+    
+}
+.string{
+  hyphens: auto;
+  width: 93%;
+}
+.box {
+  position: absolute;
+  bottom: 300px;
+  left: 30px;
+  width: 100px;
+  height: 100px;
+  background-color: #3498db;
+  position: relative;
+  animation:  7s linear 1s infinite running move; 
+}
+
+@keyframes move {
+  0% {
+      transform: translate(0,0) rotate(0deg);
+      background-color: #3498db; 
+      opacity: 1; 
+  }
+  30% {
+      transform: translate(300px, 0) rotate(180deg);
+      background-color: #e74c3c;
+      opacity: 0.7;  
+  }
+  45% {
+      transform: translate(300px,300px) rotate(360deg);
+      background-color: #f1c40f;
+      opacity: 0.5; 
+  }
+  100% {
+      transform: translate(1350px, 300px) rotate(720deg);
+      background-color: #2ecc71;
+      opacity: 0;
+  }
+
+}
+.stringer{
+   background-image: linear-gradient(rgba(231, 76, 60, 0.5), rgba(231, 76, 60, 0.5)), url('D:/2_курс/4_семестр/Пирweb/lab1/task2/images/3.jpg');
+    
+   background-color: rgba(231, 76, 60, 0.8);
+   background-origin: border-box; 
+   background-repeat: no-repeat;
+    display: inline-block;
+     
+   
+   
+    z-index: 1; /* Текст выше псевдоэлемента */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Тень для улучшения читаемости */
+
+}
+.string1{
+  text-align: justify ;
+  font-size: 16px;
+  color: rgba(12, 25, 55, 0.5);  
+  font-family: 'Roboto', sans-serif; 
+}
+.string2{
+  text-align: justify ;
+  font-size: 10px;
+  color: rgba(120, 250, 39, 0.5);  
+  font-family: 'Open Sans', sans-serif; 
+}.string3{
+  text-align: justify ;
+  color: rgba(255, 255, 255, 0.5);   
+  font-size: 15px; /* Размер текста */  
+  font-family: 'Lora', serif; 
+}
+.p{
+  width: 250px;
+  
+}

@@ -1,0 +1,178 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>task1</title>
+    <style>
+        table {
+            border-collapse: collapse; /* Убирает двойные границы */
+        }
+        th, td {
+            border: 1px solid black; 
+            padding: 8px; 
+            /*text-align: left;  */
+        }
+        th {
+            background-color: #f2f2f2; /* Цвет фона заголовков */
+        }
+        .thick-border {
+            border: 7px solid black; /* Жирная граница для конкретной ячейки */
+        }
+    </style>
+</head>
+<body>
+
+<table border="1" style="width: 1500px;height: 400px;background-color: #f0f0f0; margin: 0 auto; ">
+    <caption><h1>Название таблицы</h1></caption>
+    <tr>
+        <td class="thick-border" style="border-bottom: none;"rowspan="3">
+            
+            <p><strong>Крупнейшие города</strong></p>
+
+            <div style="display: inline-block; vertical-align: top; margin-right: 20px;">
+                <ol>
+                    <li>Россия
+                        <ol>
+                            <li>
+                                <p style="color: blue; text-decoration: underline; margin: 0;">
+                                    Москва
+                                </p>
+                            </li>
+                            <li>
+                                <p style="color: blue; text-decoration: underline; margin: 0;">
+                                    Питер
+                                </p>
+                            </li>
+                            <li>
+                                <p style="color: blue; text-decoration: underline; margin: 0;">
+                                    Новосибирск
+                                </p>
+                            </li>
+                        </ol>
+                    </li>
+                    <li>США
+                        <ul>
+                            <li>Нью-Йорк</li>
+                            <li>Лос-Анджелес</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+
+            <div style="display: inline-block; vertical-align: top;">
+                <img src="images/1.jpg" alt="города" width="170" height="170">
+            </div>
+        </td>
+        <td style="background-color: #dcdcdc;" ><h1 style="color: red;text-align: left;">Ячейка 2</h1></td>
+        <td class="thick-border", rowspan="4" style="text-align: center; vertical-align: middle;">
+            <img src="images/2.jpg" alt="природа" width="300" height="300">
+        </td>
+        <td style="background-color: #dcdcdc;"><h2 style="color: blue; text-align: right;">Ячейка 4</h2></td>
+        <td rowspan="3" style="text-align: center;">
+            <img src="images/3.jpg" alt="природа" width="220" height="220">
+        </td>
+        <td style="background-color: #dcdcdc;"><h3 style="color: green;">Ячейка 6</h3></td>
+    </tr>
+    <tr>
+        <td>
+            <p style="font-size: 20px; font-weight: 800;">Ячейка 7</p>
+
+        </td>
+        <td rowspan="2">
+            <div style="display: inline-block; vertical-align: top;">
+                <ol style="list-style-type: none; margin: 0; padding: 0;">
+                    <li><strong>США</strong></li>
+                    <ol style="list-style-type: none; margin: 0; padding: 0;">
+                        <li>- 4</li>
+                        <li>- 5</li>
+                    </ol>
+                </ol>
+            </div>
+
+            <div style="display: inline-block; vertical-align: top; margin-left: 20px;">
+                <p style="font-size: 20px; font-family: 'Impact'; font-stretch: condensed; color: rgb(0, 250, 5);">Ячейка 8</p>
+            </div>
+        </td>
+        <td><p style="font-size: 20px; font-stretch: condensed; color: rgb(255, 0, 0);;">Ячейка 9</p></td>
+    </tr>
+    <tr>
+        <td><p style="font-size: 20px; font-stretch: 400;">Ячейка 10</p></td>
+        <td>
+            <p><strong>Крупнейшие города</strong></p>
+            <ol>
+                <li>Россия
+                    <ol>
+                        <li>
+                            <p style="color: blue; text-decoration: underline;margin: 0;">
+                                Москва
+                            </p>
+                        </li>
+                        <li>
+                            <p style="color: blue; text-decoration: underline;margin: 0;">
+                                Питер
+                            </p>
+                        </li>
+                        <li>
+                            <p style="color: blue; text-decoration: underline;margin: 0;">
+                                Новосибирск
+                            </p>
+                        </li>
+                    </ol>
+                </li>
+                <li>США
+                    <ul>
+                        <li>Нью-Йорк</li>
+                        <li>Лос-Анджелес</li>
+                    </ul>
+                </li>
+            </ol>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <p style="text-decoration: underline; text-align: center;"><strong>Меню</strong></p>
+            <ol type="I"  >
+                <li > <p style="text-decoration: underline; margin: 0;"><strong>Первый уровень</strong></p>
+                    <ol type="A">
+                        <li><strong>Второй уровень</strong>
+                            <ul style= "list-style-type: none;">
+                                <li>1) Третий уровень - элемент 1</li>
+                                <li>2) Третий уровень - элемент 2</li>
+                            </ul>
+                        </li>
+                        <li><strong>Второй уровень</strong>
+                            <ul style= "list-style-type: none;">
+                                <li>a) Третий уровень - элемент 3</li>
+                                <li>b) Третий уровень - элемент 4</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </li>
+                <li><p style="text-decoration: underline; margin: 0;"><strong>Первый уровень - элемент 2</strong></p></li>
+                    <ol type="A">
+                        <li><strong>Второй уровень</strong>
+                            <ol type="1">
+                                <li>Третий уровень - элемент 1</li>
+                                <li>Третий уровень - элемент 2</li>
+                                <li>Третий уровень - элемент 2</li>
+                            </ol>
+                        </li>
+                        <li><strong>Второй уровень</strong>
+                            <ol style= "list-style-type: none;">
+                               
+                                <li style="margin-top: 10px;">Третий уровень - элемент 3</li>
+                                
+                                <li style="margin-top: 10px;">Третий уровень - элемент 4</li>
+
+                            </ol>
+                        </li>
+                    </ol>
+            </ol>
+             
+        </td>
+        <td colspan="3"><p style="text-decoration: underline; font-style: italic; color: #FFA500; font-size: 40px; text-align: center">Ячейка 13</p></td>
+    </tr>
+</table>
+
+</body>
+</html>

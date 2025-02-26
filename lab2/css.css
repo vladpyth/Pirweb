@@ -1,0 +1,101 @@
+
+* {
+    margin: 3px; /* Устанавливаем отступ 10px для всех элементов */
+    
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    
+    flex-direction: column;
+    align-items: center; /* Центрирование по горизонтали */
+}
+#paragraphs {
+    margin-top: 20px;
+    align-items: center;
+
+}
+#first{
+    margin-top: 20px;
+    align-items: center;
+}
+
+p {
+
+    margin: 10px 0;
+    transition: opacity 0.5s;
+    position: relative;
+}
+
+#checkbox2:checked ~ #paragraphs #children #img {
+
+    border: 5px solid #007BFF;
+    
+    border-radius: 10px; /* Скругление углов рамки */
+    width: 910px;
+}
+#checkbox2:checked ~ #paragraphs p::before  {
+
+    content: 'LONDON    ';
+    
+}
+
+
+#checkbox1:checked ~ #paragraphs #all {
+    font-family: 'Verdana',serif;
+    color: #007BFF;
+    font-size: 20px;
+    
+}
+#checkbox1:checked ~ #paragraphs #children #text-content {
+    font-family: 'Verdana',serif;
+    color: #007BFF;
+    font-size: 20px;
+    
+}
+#checkbox1:checked ~ #paragraphs #first {
+    animation: fadeOut 2s forwards; /* Анимация исчезновения */
+    
+}
+@keyframes fadeOut {
+    from {
+        opacity: 1; /* Начальная непрозрачность */
+    }
+    to {
+        opacity: 0; /* Конечная непрозрачность */
+    }
+}
+#checkbox1:checked ~ #paragraphs #two {
+    animation: fadeOut2 2s forwards; /* Анимация исчезновения */
+    
+}
+@keyframes fadeOut2 {
+    from {
+       transform: translateY(0);
+    }
+    to {
+        transform: translateY(-30px);
+    }
+}
+
+#checkbox1, #checkbox2 {
+    display: none;
+
+}
+/* Стили для "кнопок" */
+
+.checkbox-label { 
+    
+    align-items: center; /* Вертикальное выравнивание элементов */
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    display: inline-block;
+}
+
