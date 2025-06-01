@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>lab4</title>
+    
+    <link rel="stylesheet" href="css\dis.css">
+</head>
+<body>
+    <header>
+        <h1>header</h1>
+        
+    </header>
+    <main>
+        <div class ="nav">
+            
+        </div>
+        <div class="main">
+            <section>
+                <header>
+                    <h1>Форма</h1>   
+                </header>
+                 <article>
+                     <form>
+                        <label for="field1">имя:</label>
+                        <input type="text" id="field1" required><br>
+
+                        <label for="field2">неделя:</label>
+                        <input type="week" id="field2" required><br>
+
+                        <label for="field3">мужчина:</label>
+                        <input type="checkbox" id="field3" required><br>
+
+                       <label for="field4">женщина:</label>
+                       <input type="checkbox" id="field4" required><br>
+
+                        <label for="field5">согласие на вычет средств   :</label>
+                       <input type="radio" id="field5" required><br>
+
+                       <label for="field6">рост:</label>
+                       <input type="range" id="field6" required><br>
+
+                       <label for="field7">цвет волос:</label>
+                       <input type="color" id="field7" required><br>
+
+                        
+                        <button type="button" onclick="showInfo()">Показать информацию</button>
+                        
+                        
+                       
+                    </form>
+                 </article>   
+                <footer>
+                    <p> конец </p>
+                </footer>
+            </section>
+        </div>
+        <div class="aside" id="8">
+            
+        </div>
+       
+    </main>
+
+    <footer>
+        <p> footer </p>
+    </footer>
+    <script>
+
+
+     function showInfo() {
+            const name = document.getElementById('field1').value;
+            const field2 = document.getElementById('field2').value;
+            const field3 = document.getElementById('field3').checked;
+            const field4 = document.getElementById('field4').checked;
+            const field5 = document.getElementById('field5').checked;
+            const field6 = document.getElementById('field6').value;
+            const field7 = document.getElementById('field7').value;
+
+           // Получаем существующие данные из localStorage
+            let data = JSON.parse(localStorage.getItem('formData')) || [];
+
+            // Добавляем новые данные
+            data.push({ 
+                name: name,
+                field2: field2,
+                field3: field3 ? 'Man':(field4 ? 'Женщина' : 'Не указано'),
+                field5: field5,
+                field6: field6,
+                field7: field7 });
+
+            // Сохраняем обновленные данные обратно в localStorage
+            localStorage.setItem('formData', JSON.stringify(data));
+
+            // Переходим на вторую страницу
+            window.location.href = 'info.html';
+        }
+
+    
+
+    
+    
+    </script>
+</body>
+</html>

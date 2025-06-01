@@ -1,0 +1,171 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>lab5</title>
+    
+    <link rel="stylesheet" href="css\dis.css">
+</head>
+<body>
+    <header>
+        <h1>Школа № XXX</h1>
+        
+    </header>
+    <main>
+        
+        <div class="main">
+            <h1 class="h1">Школьные классы</h1>
+            <form class="form" id="myform">
+                <label for="field1">№ класса:       </label>
+                <input type="text" id="field1" required><br>
+
+                <label for="field2">кол-во учащихся:</label>
+                <input type="number" id="field2" required><br>
+
+                <label for="field3">ФИО руководителя:</label>
+                <input type="text" id="field3" required><br>
+
+                <select id="dropdown" required>
+                    <option value="" disabled selected>Выберите id</option>
+                    
+                </select>
+                <button type="button" onclick="clearForm()">очистить</button>
+                <button type="button" onclick="removeClass()">удалить по id</button>
+                <button type="button" onclick="showTeachers()">вывести инфу</button>
+                <button type="button" onclick="addClass()">добавить</button>
+            </form><br><br><br>
+            <table id="classTable">
+                <thead>
+                    <tr>
+                        <th>№ класса</th>
+                        <th>кол-во учащихся</th>
+                        <th>ФИО руководителя</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   
+                </tbody>
+            </table><br><br>
+            <div id="output">
+                
+            </div>
+        </div>
+
+        
+       
+    </main>
+
+    <footer>
+        <p> SchoolXXX@gmail.com </p>
+    </footer>
+    <script>
+
+        function clearForm() {
+            document.getElementById("myform").reset();
+        }
+        function addClass() {
+            // Получаем значения из полей ввода
+            const classNumber = document.getElementById("field1").value;
+            const studentCount = document.getElementById("field2").value;
+            const teacherName = document.getElementById("field3").value;
+            const selectedId = document.getElementById("dropdown").value;
+
+            // Проверка на заполненность полей
+            if (classNumber && studentCount && teacherName) {
+                // Создаем новую строку таблицы
+                const table = document.getElementById("classTable").getElementsByTagName('tbody')[0];
+                const newRow = table.insertRow();
+
+                // Добавляем ячейки в новую строку
+                newRow.insertCell(0).textContent = classNumber;
+                newRow.insertCell(1).textContent = studentCount;
+                newRow.insertCell(2).textContent = teacherName;
+
+                // Очищаем форму после добавления
+                const option = document.createElement("option");
+                option.value = classNumber;
+                option.textContent = classNumber; // Текст для выпадающего списка
+                document.getElementById("dropdown").appendChild(option);
+                clearForm();
+            } else {
+                alert("Пожалуйста, заполните все поля.");
+            }
+        }
+        function removeClass() {
+            const classNumberToRemove = document.getElementById("dropdown").value;
+
+            if (classNumberToRemove) {
+                const table = document.getElementById("classTable").getElementsByTagName('tbody')[0];
+                const rows = table.getElementsByTagName('tr');
+
+                // Перебираем строки таблицы для поиска нужного номера класса
+                
+                for (let i = 0; i < rows.length; i++) {
+                    const cells = rows[i].getElementsByTagName('td');
+                    if ( cells[0].textContent === classNumberToRemove) {
+                        table.deleteRow(i); // Удаляем строку
+                        break; // Выходим из цикла после удаления
+                    }
+                }
+                
+                // Удаляем опцию из выпадающего списка
+                const dropdown = document.getElementById("dropdown");
+                for (let i = 0; i < dropdown.options.length; i++) {
+                    if (dropdown.options[i].value === classNumberToRemove) {
+                        dropdown.remove(i);
+                        break;
+                    }
+                }
+            } else {
+                alert("Пожалуйста, выберите номер класса для удаления.");
+            }
+        }
+        function showTeachers() {
+           
+            const table = document.getElementById("classTable").getElementsByTagName('tbody')[0];
+            const rows = table.getElementsByTagName('tr');
+            let maxStudents = -1;
+            let minStudents = Infinity;
+            let maxTeachers = [];
+            let minTeachers = [];
+
+            // Проверяем, есть ли строки в таблице
+            if (rows.length === 0) {
+                alert("Таблица пуста. Пожалуйста, добавьте данные.");
+                return;
+            }
+
+            // Находим максимальное и минимальное количество учащихся
+            for (let i = 0; i < rows.length; i++) {
+                const cells = rows[i].getElementsByTagName('td');
+                
+                // Проверяем, что количество ячеек соответствует ожиданиям
+                if (cells.length < 3) continue; // Пропускаем строки с недостаточным количеством ячеек
+                
+                const studentCount = parseInt(cells[1].textContent);
+                const teacherName = cells[2].textContent;
+
+                if (studentCount > maxStudents) {
+                    maxStudents = studentCount;
+                    maxTeachers = [teacherName]; // Обновляем список руководителей
+                } else if (studentCount === maxStudents) {
+                    maxTeachers.push(teacherName); // Добавляем в список
+                }
+
+                if (studentCount < minStudents) {
+                    minStudents = studentCount;
+                    minTeachers = [teacherName]; // Обновляем список руководителей
+                } else if (studentCount === minStudents) {
+                    minTeachers.push(teacherName); // Добавляем в список
+                }
+            }
+
+            // Выводим результаты
+            const outputDiv = document.getElementById("output");
+            outputDiv.innerHTML = `<h3>Руководитель класса с максимальным количеством учащихся (${maxStudents}):</h3><p>${maxTeachers.join(', ')}</p>
+                                   <h3>Руководитель класса с минимальным количеством учащихся (${minStudents}):</h3><p>${minTeachers.join(', ')}</p>`;
+        }
+     
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css\dis.css">
+    <title>Таблица данных</title>
+</head>
+<body>
+    <header>
+        <h1>header</h1>
+        
+    </header>
+    <main>
+        <div class ="nav">
+            <button type="button" onclick="back()">Вернутся назад</button>
+        </div>
+        <div class="main">
+            <section>
+                <h1>Данные из формы</h1>
+                <table border="1" style="border-collapse: collapse;border: 1px solid black;padding: 8px;background-color: #f2f2f2;">
+                    <tr>
+                        <th>Имя</th>
+                        <th>неделя</th>
+                        <th>гендер</th>
+                       
+                        <th>согласие</th>
+                        <th>рост</th>
+                        <th>цвет волос</th>
+                    </tr>
+                    <tbody id="dataTable"></tbody>
+                </table>
+                 
+            </section>
+        </div>
+        <div class="aside" id="8">
+            
+        </div>
+       
+    </main>
+
+    <footer>
+        <p> footer </p>
+    </footer>
+    
+
+    <script>
+        // Извлекаем данные из localStorage и отображаем их
+        const data = JSON.parse(localStorage.getItem('formData')) || [];
+        const tableBody = document.getElementById('dataTable');
+
+        data.forEach(entry => {
+            const row = document.createElement('tr');
+            const nameCell = document.createElement('td');
+            const ageCell = document.createElement('td');
+            const field3 = document.createElement('td');
+           
+            const field5 = document.createElement('td');
+            const field6 = document.createElement('td');
+            const field7 = document.createElement('td');
+
+            nameCell.innerText = entry.name;
+            ageCell.innerText = entry.field2;
+            field3.innerText = entry.field3;
+            
+            field5.innerText = entry.field5;
+            field6.innerText = entry.field6;
+            field7.innerText = entry.field7;
+
+            row.appendChild(nameCell);
+            row.appendChild(ageCell);
+            row.appendChild(field3);
+            
+            row.appendChild(field5);
+            row.appendChild(field6);
+            row.appendChild(field7);
+            tableBody.appendChild(row);
+        });
+    function back(){
+        window.location.href = 'index.html';
+    }
+    </script>
+</body>
+</html>

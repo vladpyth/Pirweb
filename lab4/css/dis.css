@@ -1,0 +1,90 @@
+
+form {
+  max-width: 450px; 
+  margin: 20px auto; /* Центрирование формы */
+  padding: 20px; /* Внутренние отступы */
+  border: 1px solid #ccc; /* Граница */
+  border-radius: 10px; /* Закругление углов */
+  background-color: #f9f9f9; /* Цвет фона */
+}
+
+input {
+  
+  width: 50%; 
+  padding: 10px; 
+  margin-bottom: 15px; 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+}
+select{
+  padding: 10px; 
+  margin-bottom: 15px; 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+}
+button {
+  padding: 10px 15px; /* Внутренние отступы кнопки */
+  background-color: #4CAF50; /* Цвет фона кнопки */
+  color: white; /* Цвет текста кнопки */
+  border: none; /* Без границы */
+  border-radius: 5px; /* Закругление углов кнопки */
+  cursor: pointer; /* Курсор при наведении */
+}
+input:focus {
+    background-color: #e0f7fa; /* Цвет фона при фокусе */
+    border: 1px solid #00796b; /* Цвет границы при фокусе */
+}
+button:hover {
+  background-color: #45a049; /* Цвет кнопки при наведении */
+}
+main{
+
+  display: flex;o
+  justify-content: center;
+}
+header {
+  padding: 20px;
+  background: #333;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+}
+footer {
+  text-align: center;
+  padding: 10px 0;
+  background: #333;
+  color: #fff;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.nav{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 15px;
+  background:  #393e46;
+  width: 15%;
+  height: 450px;
+}
+.main{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 10%;
+  padding: 20px;
+  border-radius: 15px;
+  background: #00adb5;
+  width: 40%;
+ 
+}
+.aside{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 10%;
+  padding: 20px;
+  border-radius: 15px;
+  background: #eeeeee;
+  width: 15%;
+  height: 450px;
+}
