@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная работа №10</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        table {
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        .controls {
+            margin: 20px 0;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 5px;
+        }
+        button {
+            padding: 8px 15px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .checkbox-group {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+   
+    
+    <div class="controls">
+        <h3>Управление данными</h3>
+        <button id="sortAsc">Сортировать по возрастанию</button>
+        <button id="sortDesc">Сортировать по убыванию</button>
+        
+        <div class="checkbox-group">
+            <label>Формат чисел:</label>
+            <input type="radio" name="decimals" value="2" checked> 2 знака
+            <input type="radio" name="decimals" value="3"> 3 знака
+            <input type="radio" name="decimals" value="4"> 4 знака
+        </div>
+    </div>
+    
+    <h3>Исходный массив (10×10)</h3>
+    <div id="originalTable"></div>
+    
+    <h3>Отсортированный массив (10×10)</h3>
+    <div id="sortedTable"></div>
+    
+    <script>
+        // Загрузка исходных данных
+        fetch('/api/data')
+            .then(response => response.json())
+            .then(data => {
+                renderTable('originalTable', data.data);
+            });
+        
+        // Обработчики кнопок
+        document.getElementById('sortAsc').addEventListener('click', () => sortData('asc'));
+        document.getElementById('sortDesc').addEventListener('click', () => sortData('desc'));
+        
+        // Функция сортировки
+        function sortData(order) {
+            const decimals = document.querySelector('input[name="decimals"]:checked').value;
+            
+            fetch('/api/sort', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({order, decimals})
+            })
+            .then(response => response.json())
+            .then(data => {
+                renderTable('sortedTable', data.data);
+            });
+        }
+        
+        // Функция отрисовки таблицы
+        function renderTable(containerId, data) {
+            const container = document.getElementById(containerId);
+            let table = '<table>';
+            
+            for (let i = 0; i < 10; i++) {
+                table += '<tr>';
+                for (let j = 0; j < 10; j++) {
+                    table += `<td>${data[i * 10 + j]}</td>`;
+                }
+                table += '</tr>';
+            }
+            
+            table += '</table>';
+            container.innerHTML = table;
+        }
+    </script>
+</body>
+</html>
