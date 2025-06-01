@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Модальные окна с привязкой</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid #ccc;
+            background-color: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .modal.active {
+            display: block;
+        }
+        .button {
+            margin: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Модальные окна</h1>
+    <div>
+        <label for="size">Размер:</label>
+        <select id="size">
+            <option value="200x100">200x100</option>
+            <option value="300x200">300x200</option>
+            <option value="400x300">400x300</option>
+            <option value="500x400">500x400</option>
+            <option value="600x500">600x500</option>
+        </select>
+
+        <label for="content">Содержимое:</label>
+        <select id="content">
+            <option value="Содержимое 1">Содержимое 1</option>
+            <option value="Содержимое 2">Содержимое 2</option>
+            <option value="Содержимое 3">Содержимое 3</option>
+            <option value="Содержимое 4">Содержимое 4</option>
+            <option value="Содержимое 5">Содержимое 5</option>
+        </select>
+
+        <label for="position">Позиция:</label>
+        <select id="position">
+            <option value="50, 50">50, 50</option>
+            <option value="100, 100">100, 100</option>
+            <option value="150, 150">150, 150</option>
+            <option value="200, 200">200, 200</option>
+            <option value="250, 250">250, 250</option>
+        </select>
+
+        <button id="createModal" class="button">Создать модальное окно</button>
+    </div>
+
+    <div id="modalsContainer"></div>
+
+    <script>
+        function createModal(size, content, position) {
+            const modal = document.createElement('div');
+            modal.className = 'modal';
+            modal.style.width = size.split('x')[0] + 'px';
+            modal.style.height = size.split('x')[1] + 'px';
+            modal.style.left = position.split(',')[0] + 'px';
+            modal.style.top = position.split(',')[1] + 'px';
+
+            const contentDiv = document.createElement('div');
+            contentDiv.textContent = content;
+
+            const closeButton = document.createElement('button');
+            closeButton.textContent = 'Закрыть';
+            closeButton.onclick = function() {
+                modal.classList.remove('active');
+            };
+
+            modal.appendChild(contentDiv);
+            modal.appendChild(closeButton);
+            document.getElementById('modalsContainer').appendChild(modal);
+
+            // Возвращаем функцию с использованием bind
+            return function(newContent, newPosition) {
+                if (newContent) {
+                    contentDiv.textContent = newContent;
+                }
+                if (newPosition) {
+                    const [newLeft, newTop] = newPosition.split(',');
+                    modal.style.left = newLeft + 'px';
+                    modal.style.top = newTop + 'px';
+                }
+                modal.classList.add('active');
+            }.bind(this, content, position); // Привязываем начальные значения
+        }
+
+        document.getElementById('createModal').onclick = function() {
+            const size = document.getElementById('size').value;
+            const content = document.getElementById('content').value;
+            const position = document.getElementById('position').value;
+
+            const openModal = createModal(size, content, position);
+            openModal(content, position);
+        };
+    </script>
+</body>
+</html>

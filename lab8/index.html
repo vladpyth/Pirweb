@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab8</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        #slider {
+            max-width: 600px;
+            margin: auto;
+            display: none;
+        }
+        #slider img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        #message {
+            display: none;
+            font-size: 24px;
+            color: green;
+            margin-top: 20px;
+        }
+        input {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Слайдер с рекламными картинками</h1>
+<div id="slider">
+    <img id="slideImage" src="" alt="Слайд">
+</div>
+<div id="controls">
+    <input type="number" id="interval" placeholder="Интервал (сек)" min="1" value="2">
+    <input type="number" id="imageCount" placeholder="Количество изображений" min="1" value="5">
+    <button id="startBtn">Начать/Возобновить</button>
+    <button id="stopBtn">Остановить</button>
+</div>
+<div id="message"></div>
+
+<script>
+    const images = [
+        'img/1.jpg',
+        'img/2.jpg',
+        'img/3.jpg',
+        'img/4.jpg',
+        'img/1.jpg',
+        'img/1.jpg',
+        'img/1.jpg',
+        'img/1.jpg',
+    ];
+
+    let currentIndex = 0;
+    let intervalId;
+    const slider = document.getElementById('slider');
+    const slideImage = document.getElementById('slideImage');
+    const message = document.getElementById('message');
+
+    function showSlide() {
+        const imageCount = parseInt(document.getElementById('imageCount').value) || 5;
+        slider.style.display = 'block';
+        if (currentIndex < imageCount && currentIndex < images.length) {
+            slideImage.src = images[currentIndex];
+            currentIndex++;
+        } else {
+            stopSlider();
+            message.style.display = 'block';
+            message.textContent = 'Показ завершен!';
+        }
+    }
+
+    function startSlider() {
+        message.style.display = 'none';
+        currentIndex = 0;
+        showSlide();
+        const interval = (parseInt(document.getElementById('interval').value) || 2) * 1000;
+        intervalId = setInterval(showSlide, interval);
+    }
+
+    function stopSlider() {
+        clearInterval(intervalId);
+        slider.style.display = 'none';
+        currentIndex = 0;
+    }
+
+    document.getElementById('startBtn').addEventListener('click', startSlider);
+    document.getElementById('stopBtn').addEventListener('click', stopSlider);
+</script>
+
+</body>
+</html>
